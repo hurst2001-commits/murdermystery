@@ -284,17 +284,6 @@ p { text-wrap: pretty; }
   transform: translateY(-4px);
   box-shadow: inset 0 0 0 1px rgba(255, 233, 190, .5), 4px 9px 0 rgba(0, 0, 0, .28), 0 22px 34px rgba(0, 0, 0, .24);
 }
-.case-step-art {
-  display: grid;
-  place-items: center;
-  height: 154px;
-  margin-bottom: .85rem;
-  overflow: hidden;
-  border: 4px solid #241b15;
-  background: radial-gradient(circle at 50% 65%, #65402b, #221a16 75%);
-  box-shadow: 0 1px 0 rgba(255, 244, 220, .5);
-}
-.case-step-art .case-illustration { width: min(85%, 215px); height: 138px; filter: drop-shadow(0 7px 7px rgba(0, 0, 0, .48)); }
 .case-step-head { display: flex; align-items: center; min-height: 3.3rem; gap: .75rem; padding-bottom: .55rem; }
 .case-step-number {
   display: grid;
@@ -318,6 +307,21 @@ p { text-wrap: pretty; }
   line-height: 1.2;
   text-transform: uppercase;
 }
+.case-step-image {
+  aspect-ratio: 1.6;
+  width: 100%;
+  background-image: url('/greyton-process-contact-sheet.jpg');
+  background-size: 200% 300%;
+  background-position: 0% 0%;
+  border: 5px solid #161411;
+  box-shadow: 0 1px 0 rgba(255, 244, 220, .5);
+  filter: sepia(.12) contrast(1.07);
+}
+.case-step:nth-child(2) .case-step-image { background-position: 100% 0%; }
+.case-step:nth-child(3) .case-step-image { background-position: 0% 50%; }
+.case-step:nth-child(4) .case-step-image { background-position: 100% 50%; }
+.case-step:nth-child(5) .case-step-image { background-position: 0% 100%; }
+.case-step:nth-child(6) .case-step-image { background-position: 100% 100%; }
 .case-step-description { margin: .7rem .2rem 0; color: #38291d; font-size: .85rem; line-height: 1.45; }
 
 .case-suspects { background-color: #171715 !important; }
@@ -398,8 +402,6 @@ p { text-wrap: pretty; }
   .case-hero-content { padding-bottom: 5.5rem; }
   .case-hero h1 { font-size: clamp(3.9rem, 15vw, 6rem); }
   .case-paper, .case-home > section:not(.case-hero) { padding-block: 5rem; }
-  .case-step-art { height: 138px; }
-  .case-step-art .case-illustration { height: 124px; }
   .case-custom-step-art { flex-basis: 5.5rem; width: 5.5rem; height: 5.5rem; }
   .case-process .grid > div { margin-left: .75rem; }
   .case-custom > section:first-child { min-height: 680px; }

@@ -13,16 +13,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import useEmblaCarousel from 'embla-carousel-react';
 import './HomeCustomCta.css';
-import { CaseIllustration, type CaseIllustrationName } from '@/components/CaseIllustration';
-
-const processArt: CaseIllustrationName[] = [
-  'brass-compass',
-  'detective-kit',
-  'confidential-dossier',
-  'oil-lantern',
-  'magnifying-glass',
-  'sealed-letter',
-];
+import { CaseIllustration } from '@/components/CaseIllustration';
 
 function CharacterCard({ suspect }: { suspect: any }) {
   const [revealed, setRevealed] = useState(false);
@@ -193,15 +184,11 @@ export default function Home() {
           <div className="case-process-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
             {content.steps.map((step) => (
               <article key={step.number} className="case-step group">
-                <div className="case-step-art">
-                  <CaseIllustration
-                    name={processArt[(step.number - 1) % processArt.length] ?? 'brass-compass'}
-                  />
-                </div>
                 <div className="case-step-head">
                   <span className="case-step-number">{String(step.number).padStart(2, '0')}</span>
                   <h3 className="case-step-title">{step.title}</h3>
                 </div>
+                <div className="case-step-image" aria-hidden="true" />
                 <p className="case-step-description">{step.description}</p>
               </article>
             ))}
