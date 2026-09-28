@@ -137,10 +137,11 @@ html {
 .mist-overlay {
   position: fixed;
   inset: 0;
-  z-index: 45;
+  z-index: 4;
   overflow: hidden;
   pointer-events: none;
   mix-blend-mode: screen;
+  opacity: .42;
 }
 .mist-overlay::before,
 .mist-overlay::after {
@@ -211,15 +212,58 @@ p { text-wrap: pretty; }
   background-size: cover;
   background-position: center center;
   transform: scale(1.035);
-  animation: scene-settle 1.8s ease-out both;
+  animation: scene-haunt 26s ease-in-out infinite alternate;
 }
 .case-hero-shade {
   background: linear-gradient(90deg, rgba(13,13,12,.95) 0%, rgba(17,16,14,.84) 32%, rgba(17,16,14,.38) 68%, rgba(17,16,14,.26) 100%),
     linear-gradient(0deg, #1c1915 0%, transparent 28%, rgba(19,16,14,.08) 72%, rgba(12,12,11,.48) 100%);
 }
-.case-hero-content { max-width: 780px; padding: 3rem 0 4rem; animation: reveal-case .85s .14s both; }
+.case-hero-mist {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.case-hero-mist::before, .case-hero-mist::after {
+  content: '';
+  position: absolute;
+  left: -32%;
+  bottom: -12%;
+  width: 166%;
+  height: 68%;
+  background:
+    radial-gradient(ellipse 21% 24% at 12% 68%, rgba(208, 212, 207, .48) 0%, transparent 84%),
+    radial-gradient(ellipse 20% 23% at 28% 56%, rgba(200, 208, 208, .42) 0%, transparent 85%),
+    radial-gradient(ellipse 25% 28% at 52% 73%, rgba(197, 204, 201, .5) 0%, transparent 83%),
+    radial-gradient(ellipse 20% 26% at 75% 54%, rgba(206, 210, 201, .4) 0%, transparent 86%),
+    radial-gradient(ellipse 24% 27% at 94% 69%, rgba(192, 200, 198, .47) 0%, transparent 84%);
+  filter: blur(19px);
+  mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+  will-change: transform;
+  animation: fog-crawl 13s ease-in-out infinite alternate;
+}
+.case-hero-mist::after {
+  bottom: 8%;
+  height: 52%;
+  opacity: .72;
+  filter: blur(28px);
+  animation: fog-crawl-far 19s ease-in-out infinite alternate;
+}
+.case-hero-content { max-width: 780px; padding: 3rem 0 4rem; position: relative; z-index: 3; }
+.case-hero-content > * { animation: reveal-case .9s ease-out both; }
+.case-hero-content > :nth-child(1) { animation-delay: .1s; }
+.case-hero-content > :nth-child(2) { animation-delay: .22s; }
+.case-hero-content > :nth-child(3) { animation-delay: .4s; }
+.case-hero-content > :nth-child(4) { animation-delay: .54s; }
+.case-hero-content > :nth-child(5) { animation-delay: .7s; }
+.case-hero-content > :nth-child(6) { animation-delay: .82s; }
 .case-hero-rule { width: 88px; height: 1px; background: #b79560; margin-bottom: 2rem; position: relative; }
-.case-hero-rule::after { content: ''; position: absolute; width: 7px; height: 7px; right: 0; top: -3px; border: 1px solid #b79560; transform: rotate(45deg); }
+.case-hero-rule::after { content: ''; position: absolute; width: 7px; height: 7px; right: 0; top: -3px; border: 1px solid #b79560; transform: rotate(45deg); animation: clue-glow 4s ease-in-out infinite; }
+.case-hero-content a { transition: transform .28s ease, box-shadow .28s ease; }
+.case-hero-content a:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,.38); }
+.case-reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.case-reveal.is-visible { opacity: 1; transform: none; }
 .case-hero h1 { color: #f1e6d1; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: clamp(4.2rem, 8vw, 8.4rem); line-height: .95; letter-spacing: -.035em; text-shadow: 0 4px 28px rgba(0,0,0,.5); }
 .case-hero p.text-primary { color: #d3aa73; font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: clamp(1.7rem, 2.5vw, 2.2rem); letter-spacing: .015em; line-height: 1.35; }
 .case-hero p.text-muted-foreground { color: #e2d6c2; font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1rem, 1.25vw, 1.15rem); letter-spacing: .005em; line-height: 1.75; max-width: 36rem; }
@@ -393,7 +437,23 @@ p { text-wrap: pretty; }
 .case-footer h3 { color: #d9b881; font-family: 'IM Fell English', Georgia, serif; font-size: 1.55rem; }
 .case-footer img { filter: drop-shadow(0 3px 10px rgba(0,0,0,.35)); }
 
-@keyframes scene-settle { from { transform: scale(1.075); opacity: .5; } to { transform: scale(1.035); opacity: 1; } }
+@keyframes scene-haunt {
+  0% { transform: scale(1.065) translate3d(-.7%, 0, 0); opacity: .75; }
+  8% { opacity: 1; }
+  100% { transform: scale(1.11) translate3d(.7%, -.6%, 0); opacity: 1; }
+}
+@keyframes fog-crawl {
+  from { transform: translate3d(-12%, 2%, 0) scale(1.03); }
+  to { transform: translate3d(12%, -3%, 0) scale(1.16); }
+}
+@keyframes fog-crawl-far {
+  from { transform: translate3d(10%, -1%, 0) scale(1.05); }
+  to { transform: translate3d(-10%, 3%, 0) scale(1.15); }
+}
+@keyframes clue-glow {
+  0%, 100% { box-shadow: 0 0 3px rgba(192, 145, 91, .25); }
+  50% { box-shadow: 0 0 12px rgba(192, 145, 91, .8); }
+}
 @keyframes reveal-case { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @media (max-width: 768px) {
   .case-hero { min-height: 790px; align-items: flex-end; }
@@ -409,6 +469,6 @@ p { text-wrap: pretty; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .mist-overlay::before, .mist-overlay::after { animation: none !important; will-change: auto; }
 }
