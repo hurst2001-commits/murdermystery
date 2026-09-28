@@ -279,6 +279,8 @@ export const DeleteAdminPublicEventDateResponse = zod.void()
 export const createPublicEventSignupBodyNameMin = 2;
 export const createPublicEventSignupBodyNameMax = 100;
 
+export const createPublicEventSignupBodyEmailMax = 254;
+
 export const createPublicEventSignupBodyAddressMin = 5;
 export const createPublicEventSignupBodyAddressMax = 300;
 
@@ -293,6 +295,7 @@ export const createPublicEventSignupBodyWhatsappMax = 30;
 export const CreatePublicEventSignupBody = zod.object({
   "eventDateId": zod.number().int(),
   "name": zod.string().min(createPublicEventSignupBodyNameMin).max(createPublicEventSignupBodyNameMax),
+  "email": zod.string().email().max(createPublicEventSignupBodyEmailMax),
   "address": zod.string().min(createPublicEventSignupBodyAddressMin).max(createPublicEventSignupBodyAddressMax),
   "phone": zod.string().min(createPublicEventSignupBodyPhoneMin).max(createPublicEventSignupBodyPhoneMax),
   "whatsapp": zod.string().min(createPublicEventSignupBodyWhatsappMin).max(createPublicEventSignupBodyWhatsappMax)
@@ -367,6 +370,7 @@ export const UpdateAdminPricingResponse = zod.object({
 export const ListAdminPublicEventSignupsResponseItem = zod.object({
   "id": zod.number().int(),
   "name": zod.string(),
+  "email": zod.string().nullish(),
   "address": zod.string(),
   "phone": zod.string(),
   "whatsapp": zod.string(),
@@ -407,6 +411,7 @@ export const UpdateAdminPublicEventSignupBody = zod.object({
 export const UpdateAdminPublicEventSignupResponse = zod.object({
   "id": zod.number().int(),
   "name": zod.string(),
+  "email": zod.string().nullish(),
   "address": zod.string(),
   "phone": zod.string(),
   "whatsapp": zod.string(),
@@ -443,6 +448,7 @@ export const MoveAdminPublicEventSignupBody = zod.object({
 export const MoveAdminPublicEventSignupResponse = zod.object({
   "id": zod.number().int(),
   "name": zod.string(),
+  "email": zod.string().nullish(),
   "address": zod.string(),
   "phone": zod.string(),
   "whatsapp": zod.string(),

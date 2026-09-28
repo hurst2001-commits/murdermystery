@@ -13,6 +13,8 @@ export interface PublicEventSignupInput {
      * @maxLength 100
      */
   name: string;
+  /** @maxLength 254 */
+  email: string;
   /**
      * @minLength 5
      * @maxLength 300

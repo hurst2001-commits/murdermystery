@@ -67,7 +67,7 @@ in the source archive, chat, or a public repository.
 | `EXTERNAL_CLERK_SECRET_KEY` | Secret key from that same Clerk application; server only |
 | `EXTERNAL_ADMIN_USER_ID` | Clerk user ID of the one administrator allowed to access the admin API |
 | `NEON_DATABASE_URL` | Neon PostgreSQL connection string; server only |
-| `BREVO_API_KEY` | Brevo API key for transactional owner notifications; server only |
+| `BREVO_API_KEY` | Brevo API key for transactional owner notifications and customer confirmations; server only |
 | `BREVO_FROM_EMAIL` | Sender address verified in Brevo for transactional email |
 
 Hostinger supplies `PORT` at runtime. The entry file sets `NODE_ENV=production`

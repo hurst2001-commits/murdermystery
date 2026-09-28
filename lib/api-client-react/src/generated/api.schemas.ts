@@ -112,6 +112,8 @@ export interface PublicEventSignupInput {
      * @maxLength 100
      */
   name: string;
+  /** @maxLength 254 */
+  email: string;
   /**
      * @minLength 5
      * @maxLength 300
@@ -167,6 +169,8 @@ export interface PublicEventSignupResult {
 export type PublicEventSignup = ({
   id: number;
   name: string;
+  /** @nullable */
+  email?: string | null;
   address: string;
   phone: string;
   whatsapp: string;

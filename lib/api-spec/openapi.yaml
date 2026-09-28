@@ -617,6 +617,7 @@ components:
       required:
         - eventDateId
         - name
+        - email
         - address
         - phone
         - whatsapp
@@ -627,6 +628,10 @@ components:
           type: string
           minLength: 2
           maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
         address:
           type: string
           minLength: 5
@@ -686,6 +691,7 @@ components:
           properties:
             id: { type: integer }
             name: { type: string }
+            email: { type: ["string", "null"] }
             address: { type: string }
             phone: { type: string }
             whatsapp: { type: string }

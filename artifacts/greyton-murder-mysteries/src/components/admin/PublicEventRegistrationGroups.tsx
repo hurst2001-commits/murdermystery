@@ -27,6 +27,7 @@ function RegistrationGroup({
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
+                <TableHead>Email</TableHead>
                 <TableHead>Address</TableHead>
                 <TableHead>Contact details</TableHead>
                 <TableHead>Signed up on</TableHead>
@@ -37,6 +38,7 @@ function RegistrationGroup({
               {registrations.map((signup) => (
                 <TableRow key={signup.id}>
                   <TableCell className="font-medium">{signup.name}</TableCell>
+                  <TableCell>{signup.email ? <a href={`mailto:${signup.email}`} className="hover:text-primary">{signup.email}</a> : '—'}</TableCell>
                   <TableCell>
                     <span className="flex min-w-48 items-start gap-2">
                       <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />

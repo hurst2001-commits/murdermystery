@@ -30,6 +30,7 @@ import { CaseIllustration } from '@/components/CaseIllustration';
 const signupSchema = z.object({
   eventDateId: z.number().int().positive({ message: 'Please choose an event date' }),
   name: z.string().min(2, "Please enter your full name"),
+  email: z.string().trim().email('Please enter a valid email address').max(254),
   address: z.string().min(5, "Please enter your address"),
   phone: z.string().min(5, "Please enter a valid phone number"),
   whatsapp: z.string().min(5, "Please enter a valid WhatsApp number"),
@@ -50,6 +51,7 @@ export default function PublicEvent() {
     resolver: zodResolver(signupSchema),
     defaultValues: {
       name: '',
+      email: '',
       address: '',
       phone: '',
       whatsapp: '',
@@ -197,7 +199,7 @@ export default function PublicEvent() {
                   <h3 className="text-2xl font-serif text-foreground">Your Name is on the List</h3>
                   <p className="text-muted-foreground leading-relaxed">
                      We have reserved your place for {confirmedTitle} on {confirmedDate}. Venue TBA.
-                     The Game Master will contact you via WhatsApp with details.
+                      A confirmation email is on its way. The Game Master will contact you via WhatsApp with details.
                   </p>
                   <p className="text-sm font-serif italic text-muted-foreground pt-4">
                     Prepare your alibi.
@@ -278,11 +280,33 @@ export default function PublicEvent() {
                                 className="bg-background/50 border-border focus-visible:ring-primary h-12" 
                                 {...field} 
                               />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                             </FormControl>
+                             <FormMessage />
+                           </FormItem>
+                         )}
+                       />
+                       <FormField
+                         control={form.control}
+                         name="email"
+                         render={({ field }) => (
+                           <FormItem>
+                             <FormLabel className="text-foreground/80 uppercase text-xs tracking-wider">Email Address</FormLabel>
+                             <FormControl>
+                               <Input
+                                 type="email"
+                                 autoComplete="email"
+                                 placeholder="you@example.com"
+                                 className="bg-background/50 border-border focus-visible:ring-primary h-12"
+                                 {...field}
+                               />
+                             </FormControl>
+                             <p className="text-xs text-muted-foreground mt-1.5">
+                               We will send your registration details to this address.
+                             </p>
+                             <FormMessage />
+                           </FormItem>
+                         )}
+                       />
                       
                       <FormField
                         control={form.control}

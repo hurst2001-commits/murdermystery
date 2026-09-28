@@ -22,6 +22,7 @@ export async function exportPublicEventSignups(signups: PublicEventSignup[], dat
     );
     sheet.columns = [
       { header: 'Name', key: 'name', width: 35 },
+      { header: 'Email', key: 'email', width: 35 },
       { header: 'Cell number', key: 'phone', width: 24 },
       { header: 'Group', key: 'group', width: 12 },
       { header: 'Murder mystery', key: 'mystery', width: 35 },
@@ -30,11 +31,12 @@ export async function exportPublicEventSignups(signups: PublicEventSignup[], dat
       { header: 'Registered on', key: 'registeredOn', width: 20 },
     ];
     sheet.getRow(1).font = { bold: true };
-    sheet.getColumn(2).numFmt = '@';
+    sheet.getColumn(3).numFmt = '@';
 
     for (const registration of registrations) {
       sheet.addRow({
         name: registration.name,
+        email: registration.email ?? '',
         phone: registration.phone,
         group: registration.eventNumber,
         mystery: scheduled?.title ?? (registration.eventDateId === null ? 'Not recorded' : 'Title to be announced'),

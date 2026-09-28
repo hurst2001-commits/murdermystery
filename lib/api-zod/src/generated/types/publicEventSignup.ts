@@ -9,6 +9,8 @@
 export type PublicEventSignup = ({
   id: number;
   name: string;
+  /** @nullable */
+  email?: string | null;
   address: string;
   phone: string;
   whatsapp: string;

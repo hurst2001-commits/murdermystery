@@ -42,7 +42,7 @@ import {
   publicEventDatesTable,
   publicEventSignupsTable,
 } from "@workspace/db";
-import { sendOwnerNotification } from "../lib/ownerEmail";
+import { sendCustomerConfirmation, sendOwnerNotification } from "../lib/ownerEmail";
 
 const router: IRouter = Router();
 
@@ -224,6 +224,18 @@ router.post("/bookings", async (req, res): Promise<void> => {
   }).catch((err: unknown) => {
     req.log.error({ err, bookingId: booking.id }, "Booking notification email failed");
   });
+  void sendCustomerConfirmation(booking.email, "We received your murder mystery enquiry", [
+    `Hello ${booking.firstName},`,
+    "",
+    "Thank you for your interest in Greyton Murder Mysteries. We have received your booking enquiry:",
+    `Experience: ${booking.experience}`,
+    `Preferred date: ${booking.preferredDate}`,
+    `Number of guests: ${booking.guests}`,
+    "",
+    "This is an acknowledgement of your enquiry, not a confirmed booking. We will be in touch to discuss availability and the next steps.",
+  ]).catch((err: unknown) => {
+    req.log.error({ err, bookingId: booking.id }, "Booking confirmation email failed");
+  });
 });
 
 router.post("/custom-enquiries", async (req, res): Promise<void> => {
@@ -252,6 +264,17 @@ router.post("/custom-enquiries", async (req, res): Promise<void> => {
     ],
   }).catch((err: unknown) => {
     req.log.error({ err, enquiryId: enquiry.id }, "Custom enquiry notification email failed");
+  });
+  void sendCustomerConfirmation(enquiry.email, "We received your custom mystery enquiry", [
+    `Hello ${enquiry.contactName},`,
+    "",
+    "Thank you for telling us about your group. We have received your custom mystery enquiry:",
+    `Preferred date: ${enquiry.preferredDate}`,
+    `Number of guests: ${enquiry.guests}`,
+    "",
+    "This is an acknowledgement of your enquiry, not a confirmed booking. We will be in touch to discuss your experience and the next steps.",
+  ]).catch((err: unknown) => {
+    req.log.error({ err, enquiryId: enquiry.id }, "Custom enquiry confirmation email failed");
   });
 });
 
@@ -283,7 +306,7 @@ router.get("/public-event", async (_req, res): Promise<void> => {
 router.post("/public-event-signups", async (req, res): Promise<void> => {
   const body = CreatePublicEventSignupBody.safeParse(req.body);
   if (!body.success) {
-    res.status(400).json({ error: "Please provide your name, address, phone and WhatsApp number." });
+    res.status(400).json({ error: "Please provide a valid name, email, address, phone and WhatsApp number." });
     return;
   }
 
@@ -336,12 +359,26 @@ router.post("/public-event-signups", async (req, res): Promise<void> => {
       `Mystery: ${result.title ?? "Title to be announced"}`,
       `Date: ${result.date} at ${result.time} (Venue TBA)`,
       `Name: ${result.name}`,
+      `Email: ${result.email}`,
       `Address: ${result.address}`,
       `Phone: ${result.phone}`,
       `WhatsApp: ${result.whatsapp}`,
     ],
   }).catch((err: unknown) => {
     req.log.error({ err, signupId: result.id }, "Public event signup email failed");
+  });
+  void sendCustomerConfirmation(body.data.email, "Your public murder mystery place is reserved", [
+    `Hello ${result.name},`,
+    "",
+    "Your place at a Greyton Murder Mysteries public event has been reserved. Here are your registration details:",
+    `Mystery: ${result.title ?? "Title to be announced"}`,
+    `Date: ${result.date} at ${result.time}`,
+    `Group: ${result.eventNumber}`,
+    `Price: R${publicEventPricePerPerson} per person`,
+    "",
+    "The venue is still to be announced. The Game Master will contact you via WhatsApp with the location and event details. No payment has been taken by this registration.",
+  ]).catch((err: unknown) => {
+    req.log.error({ err, signupId: result.id }, "Public event confirmation email failed");
   });
 });
 

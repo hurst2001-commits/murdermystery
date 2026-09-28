@@ -8,6 +8,7 @@ export const publicEventSignupsTable = pgTable("public_event_signups", {
   eventDateId: integer("event_date_id").references(() => publicEventDatesTable.id, { onDelete: "restrict" }),
   eventNumber: integer("event_number").notNull().default(1),
   name: text("name").notNull(),
+  email: text("email"),
   address: text("address").notNull().default(""),
   phone: text("phone").notNull(),
   whatsapp: text("whatsapp").notNull(),
