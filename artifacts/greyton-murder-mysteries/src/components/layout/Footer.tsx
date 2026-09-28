@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Facebook, Instagram } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import { TermsOfUseDialog } from './TermsOfUseDialog';
+import { PrivacyPolicyDialog } from './PrivacyPolicyDialog';
 
 export function Footer() {
   return (
@@ -88,9 +89,7 @@ export function Footer() {
             Website Designed by Fortune Design
           </a>
           <div className="flex gap-4">
-            <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-              Privacy Policy
-            </Link>
+            <PrivacyPolicyDialog />
             <TermsOfUseDialog />
           </div>
         </div>
