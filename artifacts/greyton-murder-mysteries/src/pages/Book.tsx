@@ -21,6 +21,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { CaseIllustration } from '@/components/CaseIllustration';
 
 // --- SCHEMAS ---
 
@@ -191,6 +192,7 @@ export default function Book() {
     <div className="case-book w-full py-24 md:py-32 bg-background">
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-12">
+          <CaseIllustration name="confidential-dossier" className="case-book-art" />
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4">Book Your Murder</h1>
           <p className="text-muted-foreground text-lg">Select an experience below to begin.</p>
         </div>

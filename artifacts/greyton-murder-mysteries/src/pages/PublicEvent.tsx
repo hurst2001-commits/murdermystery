@@ -25,6 +25,7 @@ import { Loader2, CheckCircle2 } from 'lucide-react';
 import { format, parseISO } from 'date-fns';
 
 import sealImage from '@assets/generated_images/wax_seal_icon.png';
+import { CaseIllustration } from '@/components/CaseIllustration';
 
 const signupSchema = z.object({
   eventDateId: z.number().int().positive({ message: 'Please choose an event date' }),
@@ -205,6 +206,7 @@ export default function PublicEvent() {
               ) : (
                 <div className="space-y-8">
                   <div className="text-center border-b border-border/50 pb-6">
+                    <CaseIllustration name="greyton-detective" className="case-event-art" />
                     <h3 className="text-2xl font-serif text-foreground mb-2">Claim Your Seat</h3>
                      {selectedDate ? (
                        <>

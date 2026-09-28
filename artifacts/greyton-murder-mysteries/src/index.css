@@ -255,6 +255,8 @@ p { text-wrap: pretty; }
 .case-paper .container > svg { margin-inline: 0; }
 .case-paper .space-y-6 { text-align: left; font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1rem, 1.12vw, 1.08rem); line-height: 1.8; }
 .case-paper .space-y-6 p:first-child { font-style: italic; font-size: 1.05em; }
+.case-illustration { display: block; max-width: 100%; object-fit: contain; filter: drop-shadow(0 8px 9px rgba(13, 9, 6, .24)); }
+.case-paper-art { width: 220px; height: 145px; margin: 0 0 1.5rem; }
 
 .case-home > section:not(.case-hero):not(.case-paper) h2,
 .case-custom h1, .case-event h1, .case-book h1,
@@ -282,6 +284,17 @@ p { text-wrap: pretty; }
   transform: translateY(-4px);
   box-shadow: inset 0 0 0 1px rgba(255, 233, 190, .5), 4px 9px 0 rgba(0, 0, 0, .28), 0 22px 34px rgba(0, 0, 0, .24);
 }
+.case-step-art {
+  display: grid;
+  place-items: center;
+  height: 154px;
+  margin-bottom: .85rem;
+  overflow: hidden;
+  border: 4px solid #241b15;
+  background: radial-gradient(circle at 50% 65%, #65402b, #221a16 75%);
+  box-shadow: 0 1px 0 rgba(255, 244, 220, .5);
+}
+.case-step-art .case-illustration { width: min(85%, 215px); height: 138px; filter: drop-shadow(0 7px 7px rgba(0, 0, 0, .48)); }
 .case-step-head { display: flex; align-items: center; min-height: 3.3rem; gap: .75rem; padding-bottom: .55rem; }
 .case-step-number {
   display: grid;
@@ -305,21 +318,6 @@ p { text-wrap: pretty; }
   line-height: 1.2;
   text-transform: uppercase;
 }
-.case-step-image {
-  aspect-ratio: 1.6;
-  width: 100%;
-  background-image: url('/greyton-process-contact-sheet.jpg');
-  background-size: 200% 300%;
-  background-position: 0% 0%;
-  border: 5px solid #161411;
-  box-shadow: 0 1px 0 rgba(255, 244, 220, .5);
-  filter: sepia(.12) contrast(1.07);
-}
-.case-step:nth-child(2) .case-step-image { background-position: 100% 0%; }
-.case-step:nth-child(3) .case-step-image { background-position: 0% 50%; }
-.case-step:nth-child(4) .case-step-image { background-position: 100% 50%; }
-.case-step:nth-child(5) .case-step-image { background-position: 0% 100%; }
-.case-step:nth-child(6) .case-step-image { background-position: 100% 100%; }
 .case-step-description { margin: .7rem .2rem 0; color: #38291d; font-size: .85rem; line-height: 1.45; }
 
 .case-suspects { background-color: #171715 !important; }
@@ -340,12 +338,14 @@ p { text-wrap: pretty; }
 .case-packages .space-y-8 > .rounded-2xl:hover { border-color: #bd9664; }
 .case-packages .space-y-8 > .rounded-2xl span.text-primary { color: #d3a56d; }
 .case-packages .space-y-8 > .rounded-2xl a.bg-foreground { background: #d4bf9a; color: #2e221a; }
+.case-package-art { width: 175px; height: 105px; margin: -.5rem 0 1.25rem; }
 .case-occasions .flex > div > div { border-radius: 2px; background: #2b241f; border-color: #68523b; min-height: 205px; }
 .case-testimonials .grid > div { border: 1px solid #68543e; background: #29221d; }
 .case-greyton { background: linear-gradient(0deg, rgba(24,20,18,.92), rgba(24,20,18,.74)), url('/greyton-dusk.jpg') center 47%/cover; }
 .case-greyton .max-w-lg { background: #d8c5a2; color: #30251b; border-radius: 2px; border-color: #af9064; }
 .case-greyton .max-w-lg h3 { color: #30251b; }
 .case-greyton .max-w-lg p { color: #594838; }
+.case-weekend-art { width: 205px; height: 130px; margin: 0 auto 1rem; }
 .case-faq { background-color: #201b18 !important; }
 .case-faq [data-state] { border-color: #564636; }
 .case-final { background: #151513 !important; color: #e8dac3; border-top: 1px solid #725439; }
@@ -362,14 +362,19 @@ p { text-wrap: pretty; }
 .case-event #rsvp-section .text-muted-foreground, .case-event #rsvp-section .text-foreground\/80 { color: #63513e; }
 .case-event #rsvp-section input, .case-event #rsvp-section button[role="combobox"] { background: #eee1c8; color: #30261c; border-color: #a98b64; }
 .case-event #rsvp-section .text-primary { color: #82292b; }
+.case-event-art { width: 170px; height: 115px; margin: 0 auto 1rem; }
 
 .case-custom > section:first-child { background: linear-gradient(90deg, rgba(16,15,14,.93), rgba(18,15,14,.48)), url('/greyton-custom-hero.jpg') center/cover !important; min-height: 710px; }
 .case-custom > section:first-child .text-background, .case-custom > section:first-child .text-background\/80 { color: #f0e3cc; }
 .case-custom > section:first-child h1 { color: #d6b783; }
 .case-custom > section:first-child h2 { font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: 0; }
 .case-custom .rounded-full { border-radius: 2px; }
+.case-custom-step-art { display: grid; place-items: center; flex: 0 0 7rem; width: 7rem; height: 7rem; border: 1px solid #8d704b; background: radial-gradient(circle, #473322, #241c17 75%); transition: transform .25s ease; }
+.case-custom-step-art .case-illustration { width: 94%; height: 94%; }
+.case-custom .group:hover .case-custom-step-art { transform: translateY(-3px); }
 .case-book { background-image: radial-gradient(circle at 50% 4%, rgba(157,92,50,.18), transparent 38%); }
 .case-book h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); }
+.case-book-art { width: 185px; height: 120px; margin: 0 auto 1.25rem; }
 .case-book .rounded-3xl, .case-book .rounded-xl, .case-admin .rounded-2xl, .case-admin .rounded-xl { border-radius: 2px; }
 .case-book [role="tablist"] { background: #3a2e24; border: 1px solid #70573c; }
 .case-book [role="tab"][data-state="active"] { background: #d6c3a0; color: #30241a; }
@@ -393,6 +398,9 @@ p { text-wrap: pretty; }
   .case-hero-content { padding-bottom: 5.5rem; }
   .case-hero h1 { font-size: clamp(3.9rem, 15vw, 6rem); }
   .case-paper, .case-home > section:not(.case-hero) { padding-block: 5rem; }
+  .case-step-art { height: 138px; }
+  .case-step-art .case-illustration { height: 124px; }
+  .case-custom-step-art { flex-basis: 5.5rem; width: 5.5rem; height: 5.5rem; }
   .case-process .grid > div { margin-left: .75rem; }
   .case-custom > section:first-child { min-height: 680px; }
   .case-auth > div { padding: 1.5rem; }

@@ -8,11 +8,21 @@ import {
   AccordionTrigger 
 } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
-import { GlassWater, Wine, Moon, Sparkles, MapPin, Users, Clock, Flame } from 'lucide-react';
+import { GlassWater, Moon, Sparkles, MapPin, Users, Clock, Flame } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import useEmblaCarousel from 'embla-carousel-react';
 import './HomeCustomCta.css';
+import { CaseIllustration, type CaseIllustrationName } from '@/components/CaseIllustration';
+
+const processArt: CaseIllustrationName[] = [
+  'brass-compass',
+  'detective-kit',
+  'confidential-dossier',
+  'oil-lantern',
+  'magnifying-glass',
+  'sealed-letter',
+];
 
 function CharacterCard({ suspect }: { suspect: any }) {
   const [revealed, setRevealed] = useState(false);
@@ -148,7 +158,7 @@ export default function Home() {
       {/* THE MYSTERY / INTRO */}
       <section id="the-mystery" className="case-paper py-24 md:py-32 bg-card relative">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <Wine className="w-12 h-12 mx-auto text-primary mb-8 opacity-80" />
+          <CaseIllustration name="sealed-letter" className="case-paper-art" />
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4 uppercase tracking-wide">
             This isn't a board game.
           </h2>
@@ -183,11 +193,15 @@ export default function Home() {
           <div className="case-process-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
             {content.steps.map((step) => (
               <article key={step.number} className="case-step group">
+                <div className="case-step-art">
+                  <CaseIllustration
+                    name={processArt[(step.number - 1) % processArt.length] ?? 'brass-compass'}
+                  />
+                </div>
                 <div className="case-step-head">
                   <span className="case-step-number">{String(step.number).padStart(2, '0')}</span>
                   <h3 className="case-step-title">{step.title}</h3>
                 </div>
-                <div className="case-step-image" aria-hidden="true" />
                 <p className="case-step-description">{step.description}</p>
               </article>
             ))}
@@ -265,6 +279,10 @@ export default function Home() {
               
               {content.experiences.map((exp) => (
                 <div key={exp.id} className="border border-border p-8 rounded-2xl bg-card hover-elevate transition-all">
+                  <CaseIllustration
+                    name={exp.id === 'custom' ? 'sealed-letter' : 'detective-kit'}
+                    className="case-package-art"
+                  />
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-3 mb-4">
                     <div className="min-w-0">
                       <span className="text-xs font-bold tracking-widest text-primary uppercase mb-2 block">{exp.label}</span>
@@ -387,6 +405,7 @@ export default function Home() {
           </div>
           
           <div className="bg-card border border-border p-8 rounded-2xl max-w-lg mx-auto">
+             <CaseIllustration name="explorer-globe" className="case-weekend-art" />
             <h3 className="font-serif text-2xl font-bold mb-4">Make a Weekend of It</h3>
             <p className="text-muted-foreground mb-8">
               You've walked the mountain. You've had the coffee. You've opened the wine. Now solve a murder.
