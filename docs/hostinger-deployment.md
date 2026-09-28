@@ -10,14 +10,12 @@ and reconciled after cutover.
 
 Repository: https://github.com/hurst2001-commits/murdermystery
 
-The repository must have a first commit before Hostinger can import it. Use the
-curated `deliverables/greyton-github-source.zip` as the source for that commit.
-Extract it into a fresh checkout of the empty GitHub repository, then commit
-and push to `main` with a GitHub account that has write access. Do **not** push
-this Replit workspace's existing Git history: it tracks internal workspace
-metadata, raw uploaded files, and an archive that do not belong in a public
-deployment repository. The curated ZIP has no `.git` history, `.env` files,
-workspace secrets, or `node_modules`.
+ The curated source is already on the repository's `main` branch. To recreate
+ it if needed, use `deliverables/greyton-github-source.zip` as the source for a
+ fresh repository checkout. Do **not** push this Replit workspace's existing
+ Git history: it tracks internal workspace metadata, raw uploaded files, and
+ an archive that do not belong in a public deployment repository. The curated
+ ZIP has no `.git` history, `.env` files, workspace secrets, or `node_modules`.
 
 In Hostinger, go to **Websites → Add Website → Node.js web app → Import Git
 repository**. Connect the Hostinger GitHub App to the repository, then select:
