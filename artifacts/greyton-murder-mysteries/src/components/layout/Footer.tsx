@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { Facebook, Instagram } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
+import { TermsOfUseDialog } from './TermsOfUseDialog';
 
 export function Footer() {
   return (
@@ -90,9 +91,7 @@ export function Footer() {
             <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-xs text-muted-foreground hover:text-primary transition-colors">
-              Terms of Service
-            </Link>
+            <TermsOfUseDialog />
           </div>
         </div>
       </div>
