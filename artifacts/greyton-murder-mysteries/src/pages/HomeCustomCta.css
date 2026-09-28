@@ -1,0 +1,221 @@
+.case-home > section.case-custom-cta--refined:not(.case-hero) {
+  padding: 0;
+  overflow: hidden;
+  color: #eee1ca;
+  text-align: left;
+  background: #211a19;
+}
+
+.case-custom-cta--refined .gfr-hero {
+  position: relative;
+  min-height: 560px;
+  display: flex;
+  align-items: end;
+  background:
+    linear-gradient(90deg, rgba(20, 14, 16, .9) 0%, rgba(20, 14, 16, .73) 32%, rgba(20, 14, 16, .18) 74%),
+    linear-gradient(0deg, #241719 0%, rgba(36, 23, 25, .1) 44%, rgba(21, 15, 16, .06) 100%),
+    url('/greyton-custom-section.webp') center 12% / cover no-repeat,
+    #321c21;
+}
+.case-custom-cta--refined .gfr-hero::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(206, 165, 107, .28);
+  border-bottom: 0;
+  pointer-events: none;
+}
+.case-custom-cta--refined .gfr-hero-inner,
+.case-custom-cta--refined .gfr-story-inner,
+.case-custom-cta--refined .gfr-finale-inner {
+  width: min(100% - 88px, 1200px);
+  margin-inline: auto;
+}
+.case-custom-cta--refined .gfr-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-block: 115px 68px;
+}
+.case-custom-cta--refined .gfr-hero-copy { max-width: 750px; }
+.case-home > section.case-custom-cta--refined:not(.case-hero):not(.case-paper) h2 {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  line-height: .93;
+  font-size: clamp(4.4rem, 7vw, 8rem);
+  text-wrap: balance;
+  color: #f4e7ce;
+  text-shadow: 0 8px 34px rgba(9, 7, 7, .55);
+}
+.case-custom-cta--refined h2 span {
+  display: block;
+  margin-bottom: .2em;
+  color: #d9b782;
+  font-size: .51em;
+  letter-spacing: .03em;
+  font-style: italic;
+}
+.case-custom-cta--refined .gfr-hero-copy > p {
+  max-width: 490px;
+  margin-top: 32px;
+  padding-left: 20px;
+  border-left: 2px solid #cf9d64;
+  color: #f1dfc4;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.5;
+}
+
+.case-custom-cta--refined .gfr-story {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 90% 5%, rgba(139, 72, 65, .11), transparent 49%),
+    #211a19;
+  border-top: 1px solid rgba(204, 165, 108, .3);
+}
+.case-custom-cta--refined .gfr-story-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.03fr) minmax(0, .97fr);
+  gap: clamp(48px, 8vw, 130px);
+  padding-block: clamp(80px, 9vw, 140px);
+}
+.case-custom-cta--refined .gfr-lead {
+  border-top: 1px solid #a67b54;
+  padding-top: 30px;
+}
+.case-custom-cta--refined .gfr-lead p {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(1.45rem, 2.5vw, 2.3rem);
+  line-height: 1.5;
+  letter-spacing: -.025em;
+  color: #e9dbc3;
+}
+.case-custom-cta--refined .gfr-lead strong {
+  color: #e2b989;
+  font-weight: 700;
+}
+.case-custom-cta--refined .gfr-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: #d0c1aa;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.13rem);
+  line-height: 1.9;
+}
+.case-custom-cta--refined .gfr-details p:nth-child(2) {
+  color: #f0d9b7;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.05em;
+  line-height: 1.65;
+}
+.case-custom-cta--refined .gfr-aside {
+  padding: 22px 0 0 25px;
+  border-top: 1px solid rgba(205, 167, 116, .31);
+  border-left: 2px solid rgba(205, 167, 116, .61);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: .89em;
+  font-style: italic;
+  color: #c7ab8e;
+}
+
+.case-custom-cta--refined .gfr-finale {
+  background: linear-gradient(110deg, #4a2529, #301b20 65%, #22191b);
+  border-top: 1px solid #9d7359;
+  border-bottom: 1px solid #9d7359;
+}
+.case-custom-cta--refined .gfr-finale-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding-block: 65px;
+}
+.case-custom-cta--refined h3 {
+  margin: 0;
+  color: #f4e6ce;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.case-custom-cta--refined h3 span { color: #dfb987; }
+.case-custom-cta--refined .gfr-finale a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 30px;
+  min-height: 68px;
+  padding: 18px 24px;
+  background: #dec49e;
+  color: #281b1a;
+  border: 1px solid #f0d9b4;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: .83rem;
+  font-weight: 700;
+  letter-spacing: .085em;
+  text-align: center;
+  transition: background .2s ease, transform .2s ease;
+}
+.case-custom-cta--refined .gfr-finale a:hover {
+  background: #f1deba;
+  transform: translateY(-2px);
+}
+.case-custom-cta--refined .gfr-finale a:focus-visible {
+  outline: 3px solid #fff0ce;
+  outline-offset: 4px;
+}
+.case-custom-cta--refined .gfr-finale a::after {
+  content: "↗";
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+@media (max-width: 800px) {
+  .case-custom-cta--refined .gfr-hero-inner,
+  .case-custom-cta--refined .gfr-story-inner,
+  .case-custom-cta--refined .gfr-finale-inner { width: min(100% - 44px, 600px); }
+  .case-custom-cta--refined .gfr-hero {
+    min-height: 620px;
+    background:
+      linear-gradient(0deg, #241719 0%, rgba(36, 23, 25, .93) 31%, rgba(36, 23, 25, .08) 89%),
+      url('/greyton-custom-section.webp') center top / auto 340px no-repeat,
+      #321c21;
+  }
+  .case-custom-cta--refined .gfr-hero::after { inset: 10px; }
+  .case-custom-cta--refined .gfr-hero-inner { padding-block: 300px 58px; }
+  .case-home > section.case-custom-cta--refined:not(.case-hero):not(.case-paper) h2 {
+    font-size: clamp(3.2rem, 10.5vw, 5.3rem);
+  }
+  .case-custom-cta--refined .gfr-hero-copy > p {
+    margin-top: 24px;
+    padding-left: 15px;
+    font-size: clamp(1.03rem, 3.5vw, 1.28rem);
+  }
+  .case-custom-cta--refined .gfr-story-inner {
+    display: block;
+    padding-block: 65px 76px;
+  }
+  .case-custom-cta--refined .gfr-lead { padding-top: 22px; }
+  .case-custom-cta--refined .gfr-lead p { font-size: clamp(1.25rem, 4.3vw, 1.7rem); }
+  .case-custom-cta--refined .gfr-details { margin-top: 43px; gap: 25px; line-height: 1.75; }
+  .case-custom-cta--refined .gfr-finale-inner {
+    display: block;
+    padding-block: 55px 62px;
+  }
+  .case-custom-cta--refined h3 { font-size: clamp(2.5rem, 8vw, 3.8rem); }
+  .case-custom-cta--refined .gfr-finale a {
+    width: 100%;
+    margin-top: 34px;
+    justify-content: space-between;
+    gap: 12px;
+    padding-inline: 17px;
+    font-size: .77rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-custom-cta--refined .gfr-finale a { transition: none; }
+}
