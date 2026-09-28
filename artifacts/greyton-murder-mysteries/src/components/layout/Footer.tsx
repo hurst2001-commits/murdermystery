@@ -78,6 +78,14 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Greyton Murder Mysteries. All rights reserved.
           </p>
+          <a
+            href="https://fortunedesign.co.za"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            Website Designed by Fortune Design
+          </a>
           <div className="flex gap-4">
             <Link href="/privacy" className="text-xs text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy
