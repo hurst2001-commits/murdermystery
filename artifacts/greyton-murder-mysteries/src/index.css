@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@layer theme, base, clerk, components, utilities;
+@import 'tailwindcss';
+@import '@clerk/themes/shadcn.css';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:is(.dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-display: 'IM Fell English', Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --button-outline: rgba(210, 181, 133, .28);
+  --badge-outline: rgba(210, 181, 133, .18);
+  --opaque-button-border-intensity: 8;
+  --elevate-1: rgba(214, 176, 108, .055);
+  --elevate-2: rgba(214, 176, 108, .11);
+  --background: 27 23% 9%;
+  --foreground: 37 33% 87%;
+  --border: 35 17% 29%;
+  --card: 31 22% 14%;
+  --card-foreground: 37 33% 87%;
+  --card-border: 35 17% 30%;
+  --popover: 30 23% 17%;
+  --popover-foreground: 37 33% 90%;
+  --popover-border: 35 20% 35%;
+  --primary: 354 60% 35%;
+  --primary-foreground: 38 42% 93%;
+  --secondary: 37 43% 60%;
+  --secondary-foreground: 26 26% 10%;
+  --muted: 30 18% 20%;
+  --muted-foreground: 34 18% 69%;
+  --accent: 35 24% 23%;
+  --accent-foreground: 39 35% 91%;
+  --destructive: 359 57% 41%;
+  --destructive-foreground: 38 42% 93%;
+  --input: 35 17% 35%;
+  --ring: 37 47% 63%;
+  --radius: .22rem;
+
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --primary-border: hsl(var(--primary));
+  --secondary-border: hsl(var(--secondary));
+  --muted-border: hsl(var(--muted));
+  --accent-border: hsl(var(--accent));
+  --destructive-border: hsl(var(--destructive));
+}
+
+.dark {
+  --background: 27 23% 9%;
+  --foreground: 37 33% 87%;
+  --border: 35 17% 29%;
+  --card: 31 22% 14%;
+  --card-foreground: 37 33% 87%;
+  --popover: 30 23% 17%;
+  --popover-foreground: 37 33% 90%;
+  --primary: 354 60% 35%;
+  --primary-foreground: 38 42% 93%;
+  --secondary: 37 43% 60%;
+  --secondary-foreground: 26 26% 10%;
+  --muted: 30 18% 20%;
+  --muted-foreground: 34 18% 69%;
+  --accent: 35 24% 23%;
+  --accent-foreground: 39 35% 91%;
+  --destructive: 359 57% 41%;
+  --destructive-foreground: 38 42% 93%;
+  --input: 35 17% 35%;
+  --ring: 37 47% 63%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+  :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
+}
+
+.mist-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.mist-overlay::before,
+.mist-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -8% -25%;
+  filter: blur(24px);
+  will-change: transform;
+}
+.mist-overlay::before {
+  background:
+    radial-gradient(ellipse 30% 17% at 19% 76%, rgba(169, 181, 188, .55), transparent 81%),
+    radial-gradient(ellipse 27% 11% at 59% 66%, rgba(180, 191, 194, .37), transparent 80%),
+    radial-gradient(ellipse 32% 19% at 91% 82%, rgba(146, 160, 169, .48), transparent 83%);
+  opacity: .79;
+  animation: greyton-mist-near 12s linear infinite alternate;
+}
+.mist-overlay::after {
+  background:
+    radial-gradient(ellipse 33% 12% at 80% 34%, rgba(161, 176, 183, .36), transparent 81%),
+    radial-gradient(ellipse 26% 10% at 27% 42%, rgba(179, 190, 194, .29), transparent 83%),
+    radial-gradient(ellipse 31% 12% at 57% 88%, rgba(173, 184, 188, .31), transparent 84%);
+  opacity: .63;
+  animation: greyton-mist-far 18s linear infinite alternate;
+}
+.noise-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.8;
+  z-index: 9999;
+}
+
+/* The investigation: ink, weathered paper, brass and oxblood. */
+@keyframes greyton-mist-near {
+  from { transform: translate3d(-9%, 0, 0); }
+  to { transform: translate3d(9%, 0, 0); }
+}
+@keyframes greyton-mist-far {
+  from { transform: translate3d(10%, -2%, 0); }
+  to { transform: translate3d(-10%, 2%, 0); }
+}
+
+body { background: #1c1915; }
+::selection { background: #8f3034; color: #f5e8d1; }
+.font-serif, h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; }
+h1, h2 { text-wrap: balance; }
+p { text-wrap: pretty; }
+.container { max-width: 1280px; }
+
+.case-nav { box-shadow: 0 9px 28px rgba(0,0,0,.25); }
+.case-nav nav a, .case-nav button:not([class*="bg-primary"]) {
+  letter-spacing: .08em;
+}
+.case-nav nav a { font-size: .75rem; text-transform: uppercase; }
+.case-nav nav a:hover, .case-footer a:hover { color: #d0ab70; }
+.case-nav a[class*="bg-primary"], .case-home a[class*="bg-primary"], .case-home a[class*="bg-foreground"],
+.case-home a[class*="bg-background"], .case-custom a[class*="bg-primary"] {
+  border: 1px solid rgba(226,179,109,.35);
+}
+.case-nav img { filter: drop-shadow(0 3px 8px rgba(0,0,0,.55)); }
+
+.case-hero { min-height: min(900px, 96dvh); background: #181713; }
+.case-hero-image {
+  background-image: url('/greyton-hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.035);
+  animation: scene-settle 1.8s ease-out both;
+}
+.case-hero-shade {
+  background: linear-gradient(90deg, rgba(13,13,12,.95) 0%, rgba(17,16,14,.84) 32%, rgba(17,16,14,.38) 68%, rgba(17,16,14,.26) 100%),
+    linear-gradient(0deg, #1c1915 0%, transparent 28%, rgba(19,16,14,.08) 72%, rgba(12,12,11,.48) 100%);
+}
+.case-hero-content { max-width: 780px; padding: 3rem 0 4rem; animation: reveal-case .85s .14s both; }
+.case-hero-rule { width: 88px; height: 1px; background: #b79560; margin-bottom: 2rem; position: relative; }
+.case-hero-rule::after { content: ''; position: absolute; width: 7px; height: 7px; right: 0; top: -3px; border: 1px solid #b79560; transform: rotate(45deg); }
+.case-hero h1 { color: #f1e6d1; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; font-size: clamp(4.2rem, 8vw, 8.4rem); line-height: .95; letter-spacing: -.035em; text-shadow: 0 4px 28px rgba(0,0,0,.5); }
+.case-hero p.text-primary { color: #d3aa73; font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: clamp(1.7rem, 2.5vw, 2.2rem); letter-spacing: .015em; line-height: 1.35; }
+.case-hero p.text-muted-foreground { color: #e2d6c2; font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1rem, 1.25vw, 1.15rem); letter-spacing: .005em; line-height: 1.75; max-width: 36rem; }
+.case-hero p.uppercase { color: #c3ab8b; font-size: .69rem; letter-spacing: .19em; }
+.case-hero a, .case-hero button { min-height: 56px; border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: .77rem; font-weight: 700; letter-spacing: .13em; }
+.case-hero a[href="#how-it-works"] { border-color: #b79560; color: #f4e4c8; background: rgba(17,16,14,.4); }
+.case-hero a[href="#how-it-works"]:hover { background: rgba(183,149,96,.2); }
+
+.case-video { background: #1c1915; padding-block: clamp(3rem, 7vw, 6rem); }
+.case-video .max-w-5xl { max-width: 1040px; }
+.case-video video { background: #0f100f; }
+.case-video .rounded-2xl { border-radius: 3px; border: 8px solid #302b23; box-shadow: 0 20px 55px rgba(0,0,0,.4); }
+
+.case-paper {
+  color: #2c251d;
+  background-color: #d7c5a4 !important;
+  background-image: linear-gradient(90deg, rgba(247,230,195,.52), rgba(247,230,195,.22) 45%, transparent 68%), url('/greyton-intro-paper.jpg');
+  background-position: left center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-block: 1px solid #967c56;
+}
+.case-paper h2 { color: #2e251c; font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: -.02em; }
+.case-paper h2.text-primary, .case-paper svg { color: #852c2e; }
+.case-paper .text-muted-foreground { color: #584b3b; }
+.case-paper .text-foreground { color: #2e251c; }
+.case-paper .container {
+  max-width: 1280px;
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+  text-align: left;
+}
+.case-paper .container > :is(h2, .space-y-6) { max-width: 610px; }
+.case-paper .container > svg { margin-inline: 0; }
+.case-paper .space-y-6 { text-align: left; font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(1rem, 1.12vw, 1.08rem); line-height: 1.8; }
+.case-paper .space-y-6 p:first-child { font-style: italic; font-size: 1.05em; }
+
+.case-home > section:not(.case-hero):not(.case-paper) h2,
+.case-custom h1, .case-event h1, .case-book h1,
+.case-auth h1 { font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: -.025em; }
+.case-home > section:not(.case-hero):not(.case-paper) h2 { line-height: 1.04; }
+.case-process, .case-suspects, .case-packages, .case-occasions, .case-testimonials, .case-greyton, .case-faq {
+  background-image: radial-gradient(ellipse at 80% 10%, rgba(161,110,64,.09), transparent 46%);
+}
+.case-process { background-color: #211d19; }
+.case-process-grid { max-width: 1120px; margin-inline: auto; }
+.case-step {
+  min-width: 0;
+  padding: .65rem .65rem 1rem;
+  background-color: #d1b28a;
+  background-image: radial-gradient(circle at 10% 10%, #f0d8ad 0%, transparent 42%),
+    radial-gradient(circle at 95% 90%, rgba(95, 52, 25, .28), transparent 48%),
+    repeating-linear-gradient(88deg, transparent 0, transparent 5px, rgba(70, 42, 19, .025) 6px);
+  color: #241c16;
+  border: 2px solid #8c6847;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(255, 233, 190, .5), 3px 5px 0 rgba(0, 0, 0, .32), 0 16px 28px rgba(0, 0, 0, .25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.case-step:hover {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(255, 233, 190, .5), 4px 9px 0 rgba(0, 0, 0, .28), 0 22px 34px rgba(0, 0, 0, .24);
+}
+.case-step-head { display: flex; align-items: center; min-height: 3.3rem; gap: .75rem; padding-bottom: .55rem; }
+.case-step-number {
+  display: grid;
+  flex: 0 0 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  background: #151411;
+  color: #f4dfb7;
+  border: 2px solid #a9895e;
+  box-shadow: 2px 2px 0 #4c3424;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+.case-step-title {
+  color: #231c16;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.case-step-image {
+  aspect-ratio: 1.6;
+  width: 100%;
+  background-image: url('/greyton-process-contact-sheet.jpg');
+  background-size: 200% 300%;
+  background-position: 0% 0%;
+  border: 5px solid #161411;
+  box-shadow: 0 1px 0 rgba(255, 244, 220, .5);
+  filter: sepia(.12) contrast(1.07);
+}
+.case-step:nth-child(2) .case-step-image { background-position: 100% 0%; }
+.case-step:nth-child(3) .case-step-image { background-position: 0% 50%; }
+.case-step:nth-child(4) .case-step-image { background-position: 100% 50%; }
+.case-step:nth-child(5) .case-step-image { background-position: 0% 100%; }
+.case-step:nth-child(6) .case-step-image { background-position: 100% 100%; }
+.case-step-description { margin: .7rem .2rem 0; color: #38291d; font-size: .85rem; line-height: 1.45; }
+
+.case-suspects { background-color: #171715 !important; }
+.case-suspects .grid > div { border-radius: 2px; border: 1px solid #6a5239; background: linear-gradient(145deg, #30271f, #211d19); box-shadow: 0 13px 28px rgba(0,0,0,.2); transition: transform .3s ease, border-color .3s ease; }
+.case-suspects .grid > div:hover { transform: translateY(-4px); border-color: #b19465; }
+.case-suspects .grid > div h3 { font-family: 'IM Fell English', Georgia, serif; font-size: 2rem; font-weight: 400; }
+.case-suspects .grid > div p.uppercase { color: #d2a363; }
+.case-suspects button { border-radius: 2px; border-color: #766043; color: #e7d6b9; }
+
+.case-packages { background-color: #251e19; }
+.case-packages .rounded-3xl, .case-packages .rounded-2xl, .case-occasions .rounded-2xl,
+.case-testimonials .rounded-2xl, .case-greyton .rounded-2xl { border-radius: 2px; }
+.case-packages .rounded-3xl { background: #d8c5a2; color: #2f261c; border: 1px solid #9d805a; box-shadow: 10px 12px 0 rgba(0,0,0,.2); }
+.case-packages .rounded-3xl h2, .case-packages .rounded-3xl .text-background { color: #2f261c; }
+.case-packages .rounded-3xl .text-background\/70 { color: #61503e; }
+.case-packages .rounded-3xl svg { color: #8b3231; }
+.case-packages .space-y-8 > .rounded-2xl { border-color: #68523c; background: #302821; }
+.case-packages .space-y-8 > .rounded-2xl:hover { border-color: #bd9664; }
+.case-packages .space-y-8 > .rounded-2xl span.text-primary { color: #d3a56d; }
+.case-packages .space-y-8 > .rounded-2xl a.bg-foreground { background: #d4bf9a; color: #2e221a; }
+.case-occasions .flex > div > div { border-radius: 2px; background: #2b241f; border-color: #68523b; min-height: 205px; }
+.case-testimonials .grid > div { border: 1px solid #68543e; background: #29221d; }
+.case-greyton { background: linear-gradient(0deg, rgba(24,20,18,.92), rgba(24,20,18,.74)), url('/greyton-dusk.jpg') center 47%/cover; }
+.case-greyton .max-w-lg { background: #d8c5a2; color: #30251b; border-radius: 2px; border-color: #af9064; }
+.case-greyton .max-w-lg h3 { color: #30251b; }
+.case-greyton .max-w-lg p { color: #594838; }
+.case-faq { background-color: #201b18 !important; }
+.case-faq [data-state] { border-color: #564636; }
+.case-final { background: #151513 !important; color: #e8dac3; border-top: 1px solid #725439; }
+.case-final h2 { color: #e8dac3; }
+.case-final h2.text-primary { color: #bd7773; }
+.case-final a.text-background { color: #e8dac3; }
+.case-final .text-background\/50 { color: #9c8b73; }
+
+.case-event > section:first-child img { filter: saturate(.73) sepia(.18); }
+.case-event > section:first-child > div:first-child { background: linear-gradient(90deg, rgba(18,17,16,.82), rgba(18,17,16,.3)) !important; }
+.case-event > section:first-child h1 { color: #f0dfc4; text-shadow: 0 5px 30px #171310; }
+.case-event #rsvp-section > div { border-radius: 2px; border-color: #8d7050; background: #d7c4a1; color: #32251b; box-shadow: 8px 10px 0 rgba(0,0,0,.2); }
+.case-event #rsvp-section .text-foreground { color: #31261d; }
+.case-event #rsvp-section .text-muted-foreground, .case-event #rsvp-section .text-foreground\/80 { color: #63513e; }
+.case-event #rsvp-section input, .case-event #rsvp-section button[role="combobox"] { background: #eee1c8; color: #30261c; border-color: #a98b64; }
+.case-event #rsvp-section .text-primary { color: #82292b; }
+
+.case-custom > section:first-child { background: linear-gradient(90deg, rgba(16,15,14,.93), rgba(18,15,14,.48)), url('/greyton-custom-hero.jpg') center/cover !important; min-height: 710px; }
+.case-custom > section:first-child .text-background, .case-custom > section:first-child .text-background\/80 { color: #f0e3cc; }
+.case-custom > section:first-child h1 { color: #d6b783; }
+.case-custom > section:first-child h2 { font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: 0; }
+.case-custom .rounded-full { border-radius: 2px; }
+.case-book { background-image: radial-gradient(circle at 50% 4%, rgba(157,92,50,.18), transparent 38%); }
+.case-book h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); }
+.case-book .rounded-3xl, .case-book .rounded-xl, .case-admin .rounded-2xl, .case-admin .rounded-xl { border-radius: 2px; }
+.case-book [role="tablist"] { background: #3a2e24; border: 1px solid #70573c; }
+.case-book [role="tab"][data-state="active"] { background: #d6c3a0; color: #30241a; }
+.case-book input, .case-book textarea, .case-book button[role="combobox"], .case-admin input, .case-admin textarea { border-color: #776045; }
+.case-auth { background: linear-gradient(120deg, rgba(24,21,19,.93), rgba(25,21,18,.8)), url('/greyton-dusk.jpg') center/cover; min-height: 100dvh; padding: 7rem 1rem 3rem; }
+.case-auth > div { background: rgba(29,25,21,.88); padding: 2rem; border: 1px solid #806546; box-shadow: 0 24px 65px rgba(0,0,0,.3); }
+.case-auth h1 { font-size: 2.6rem; color: #e6d3b2; }
+.case-admin { background-image: radial-gradient(circle at 10% 0%, rgba(149,84,47,.16), transparent 35%); }
+.case-admin .bg-blue-50, .case-admin .bg-green-50 { background: #332922; border-color: #715a3d; }
+.case-admin .text-blue-800, .case-admin .text-green-800, .case-admin .text-blue-900, .case-admin .text-green-900 { color: #e5d4b7; }
+.case-footer { background: #171613; border-top: 1px solid #795c3d; }
+.case-footer h3 { color: #d9b881; font-family: 'IM Fell English', Georgia, serif; font-size: 1.55rem; }
+.case-footer img { filter: drop-shadow(0 3px 10px rgba(0,0,0,.35)); }
+
+@keyframes scene-settle { from { transform: scale(1.075); opacity: .5; } to { transform: scale(1.035); opacity: 1; } }
+@keyframes reveal-case { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) {
+  .case-hero { min-height: 790px; align-items: flex-end; }
+  .case-hero-image { background-position: 33% center; }
+  .case-hero-shade { background: linear-gradient(0deg, #1c1915 0%, rgba(14,14,13,.9) 48%, rgba(14,14,13,.62) 100%); }
+  .case-hero-content { padding-bottom: 5.5rem; }
+  .case-hero h1 { font-size: clamp(3.9rem, 15vw, 6rem); }
+  .case-paper, .case-home > section:not(.case-hero) { padding-block: 5rem; }
+  .case-process .grid > div { margin-left: .75rem; }
+  .case-custom > section:first-child { min-height: 680px; }
+  .case-auth > div { padding: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .mist-overlay::before, .mist-overlay::after { animation: none !important; will-change: auto; }
+}

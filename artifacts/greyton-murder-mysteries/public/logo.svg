@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" role="img" aria-labelledby="title desc">
+  <title id="title">Greyton Murder Mysteries</title>
+  <desc id="desc">A burgundy magnifying glass framing the initials GMM.</desc>
+  <rect width="520" height="140" rx="18" fill="#fdfbf7"/>
+  <circle cx="67" cy="62" r="36" fill="none" stroke="#7a2021" stroke-width="8"/>
+  <path d="M93 88 121 116" stroke="#7a2021" stroke-width="10" stroke-linecap="round"/>
+  <text x="52" y="72" fill="#1c1b1a" font-family="Georgia, serif" font-size="27" font-weight="700">G</text>
+  <text x="145" y="60" fill="#1c1b1a" font-family="Georgia, serif" font-size="34" font-weight="700">Greyton</text>
+  <text x="145" y="95" fill="#7a2021" font-family="Arial, sans-serif" font-size="21" letter-spacing="4">MURDER MYSTERIES</text>
+</svg>
