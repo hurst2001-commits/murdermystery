@@ -66,6 +66,32 @@ export default function Home() {
     return () => window.cancelAnimationFrame(frame);
   }, [content]);
 
+  useEffect(() => {
+    if (!content || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(
+      '.case-home > section:not(.case-hero) > .container, .case-home .case-step, .case-home .case-suspects .grid > div',
+    ));
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+    for (const element of elements) {
+      if (element.getBoundingClientRect().top < window.innerHeight * 0.85) continue;
+      element.classList.add('case-reveal');
+      observer.observe(element);
+    }
+
+    return () => {
+      observer.disconnect();
+      elements.forEach((element) => element.classList.remove('case-reveal', 'is-visible'));
+    };
+  }, [content]);
+
   if (isLoading) {
     return (
       <div className="w-full min-h-screen pt-20 px-4 space-y-20 pb-20">
@@ -95,6 +121,7 @@ export default function Home() {
         {/* Abstract background elements instead of generic images */}
         <div className="case-hero-image absolute inset-0" />
         <div className="case-hero-shade absolute inset-0" />
+        <div className="case-hero-mist" aria-hidden="true" />
         
         <div className="container mx-auto px-6 md:px-10 relative z-10 text-left max-w-7xl mt-20">
           <div className="case-hero-content">
