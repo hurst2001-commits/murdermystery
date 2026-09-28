@@ -1,6 +1,6 @@
 # External deployment: Hostinger Node.js Web App
 
-This is an **alternative** deployment to Replit Publish. It serves the website
+This deployment serves the website
 and `/api` from one Express process. Do not change the live DNS until login,
 registrations, and notifications work on the new host. The original managed
 production database must remain available until late registrations are checked
@@ -12,7 +12,7 @@ Repository: https://github.com/hurst2001-commits/murdermystery
 
  The curated source is already on the repository's `main` branch. To recreate
  it if needed, use `deliverables/greyton-github-source.zip` as the source for a
- fresh repository checkout. Do **not** push this Replit workspace's existing
+  fresh repository checkout. Do **not** push this development workspace's existing
  Git history: it tracks internal workspace metadata, raw uploaded files, and
  an archive that do not belong in a public deployment repository. The curated
  ZIP has no `.git` history, `.env` files, workspace secrets, or `node_modules`.
@@ -73,11 +73,11 @@ in the source archive, chat, or a public repository.
 Hostinger supplies `PORT` at runtime. The entry file sets `NODE_ENV=production`
 and `EXTERNAL_DEPLOYMENT=true` before starting the server. The build script
 builds the website at `/` with the external Clerk publishable key and **without**
-the Replit Clerk proxy. Production database selection uses Neon and fails if
+ the hosted Clerk proxy. Production database selection uses Neon and fails if
 the URL is missing; it never falls back to the managed database.
 
 The new Clerk tenant does **not** automatically contain accounts from the
-Replit-managed Clerk tenant. Create the administrator in the external Clerk
+ managed development Clerk tenant. Create the administrator in the external Clerk
 tenant, copy that user's ID from its Users page into `EXTERNAL_ADMIN_USER_ID`,
 and verify the admin dashboard before cutover. Other signed-in accounts are
 denied access to the admin API on the external deployment.
@@ -94,4 +94,4 @@ denied access to the admin API on the external deployment.
    submitted since the Neon copy and reconcile those without overwriting Neon.
 
 SSH is not necessary for the upload-based deployment. The provided SSH port
-timed out from the Replit workspace, so this document does not assume it works.
+ timed out from the development workspace, so this document does not assume it works.

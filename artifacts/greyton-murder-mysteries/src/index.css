@@ -303,8 +303,7 @@ p { text-wrap: pretty; }
 .case-paper-art { width: 220px; height: 145px; margin: 0 0 1.5rem; }
 
 .case-home > section:not(.case-hero):not(.case-paper) h2,
-.case-custom h1, .case-event h1, .case-book h1,
-.case-auth h1 { font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: -.025em; }
+.case-custom h1, .case-event h1, .case-book h1 { font-family: 'IM Fell English', Georgia, serif; font-weight: 400; letter-spacing: -.025em; }
 .case-home > section:not(.case-hero):not(.case-paper) h2 { line-height: 1.04; }
 .case-process, .case-suspects, .case-packages, .case-occasions, .case-testimonials, .case-greyton, .case-faq {
   background-image: radial-gradient(ellipse at 80% 10%, rgba(161,110,64,.09), transparent 46%);
@@ -427,9 +426,6 @@ p { text-wrap: pretty; }
 .case-book [role="tablist"] { background: #3a2e24; border: 1px solid #70573c; }
 .case-book [role="tab"][data-state="active"] { background: #d6c3a0; color: #30241a; }
 .case-book input, .case-book textarea, .case-book button[role="combobox"], .case-admin input, .case-admin textarea { border-color: #776045; }
-.case-auth { background: linear-gradient(120deg, rgba(24,21,19,.93), rgba(25,21,18,.8)), url('/greyton-dusk.jpg') center/cover; min-height: 100dvh; padding: 7rem 1rem 3rem; }
-.case-auth > div { background: rgba(29,25,21,.88); padding: 2rem; border: 1px solid #806546; box-shadow: 0 24px 65px rgba(0,0,0,.3); }
-.case-auth h1 { font-size: 2.6rem; color: #e6d3b2; }
 .case-admin { background-image: radial-gradient(circle at 10% 0%, rgba(149,84,47,.16), transparent 35%); }
 .case-admin .bg-blue-50, .case-admin .bg-green-50 { background: #332922; border-color: #715a3d; }
 .case-admin .text-blue-800, .case-admin .text-green-800, .case-admin .text-blue-900, .case-admin .text-green-900 { color: #e5d4b7; }
@@ -465,7 +461,6 @@ p { text-wrap: pretty; }
   .case-custom-step-art { flex-basis: 5.5rem; width: 5.5rem; height: 5.5rem; }
   .case-process .grid > div { margin-left: .75rem; }
   .case-custom > section:first-child { min-height: 680px; }
-  .case-auth > div { padding: 1.5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
