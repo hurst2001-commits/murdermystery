@@ -1,0 +1,197 @@
+.case-signin {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  min-height: 100dvh;
+  background: #201b19;
+}
+.case-signin-scene {
+  position: relative;
+  min-height: 100dvh;
+  background:
+    linear-gradient(180deg, rgba(19, 17, 16, .5), rgba(22, 16, 15, .05) 40%, rgba(20, 15, 14, .68)),
+    url('/greyton-dusk.jpg') center center / cover no-repeat,
+    #1d1917;
+  border-right: 1px solid #806044;
+}
+.case-signin-scene::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(215, 178, 124, .38);
+  pointer-events: none;
+}
+.case-signin-brand {
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: 35px;
+  display: block;
+  width: 168px;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.65));
+}
+.case-signin-brand img { display: block; width: 100%; height: auto; }
+.case-signin-brand:focus-visible { outline: 2px solid #e0bd85; outline-offset: 4px; }
+.case-signin-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 65px clamp(28px, 6vw, 90px);
+  background:
+    radial-gradient(circle at 4% 90%, rgba(117, 50, 52, .15), transparent 48%),
+    #211b19;
+}
+.case-signin-panel-inner {
+  width: min(100%, 440px);
+  min-width: 0;
+  margin-inline: auto;
+}
+.case-signin-heading { margin-bottom: 32px; }
+.case-signin-rule {
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin-bottom: 30px;
+  background: #b89969;
+  position: relative;
+}
+.case-signin-rule::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  top: -3px;
+  right: 0;
+  border: 1px solid #b89969;
+  transform: rotate(45deg);
+}
+.case-signin-heading h1 {
+  margin: 0;
+  color: #efe0c5;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: clamp(3.25rem, 4.7vw, 5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+}
+.case-signin-heading p {
+  margin-top: 12px;
+  color: #cabb9e;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* The live Clerk component stays in charge of every sign-in step. */
+.case-signin-clerk-root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.case-signin-clerk-box {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.case-signin-clerk-card,
+.case-signin-clerk-footer {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.case-signin-clerk-card { padding: 0 !important; }
+.case-signin-clerk-main { padding: 0 !important; }
+.case-signin-google {
+  min-height: 50px;
+  color: #eadcc4 !important;
+  background: #342a24 !important;
+  border: 1px solid #806747 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+.case-signin-google:hover { background: #49382d !important; }
+.case-signin-google-text,
+.case-signin-field-label,
+.case-signin-identity-text {
+  color: #e6d6ba !important;
+  font-weight: 600;
+}
+.case-signin-divider-text { color: #c1af8f !important; }
+.case-signin-divider-line { background-color: #68543e !important; }
+.case-signin-field-input,
+.case-signin-otp-input {
+  min-height: 50px;
+  color: #eee0c7 !important;
+  background: #302720 !important;
+  border: 1px solid #806747 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+.case-signin-field-input::placeholder { color: #bdad92; opacity: 1; }
+.case-signin-field-input:focus,
+.case-signin-otp-input:focus { border-color: #dfba84 !important; }
+.case-signin-submit {
+  min-height: 50px;
+  color: #fff3e4 !important;
+  background: #963b42 !important;
+  border: 1px solid #b36e63 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+.case-signin-submit:hover { background: #ad4b52 !important; }
+.case-signin-submit:focus-visible,
+.case-signin-google:focus-visible,
+.case-signin-field-input:focus-visible {
+  outline: 2px solid #e2b985 !important;
+  outline-offset: 3px;
+}
+.case-signin-footer-action {
+  margin-top: 28px;
+  padding-top: 21px;
+  border-top: 1px solid #5f4a37;
+}
+.case-signin-footer-text,
+.case-signin-footer-action,
+.case-signin-hint,
+.case-signin-success { color: #c8b799 !important; }
+.case-signin-footer-link,
+.case-signin-field-action,
+.case-signin-back-link,
+.case-signin-alt-method {
+  color: #e2b985 !important;
+}
+.case-signin-footer-link:hover,
+.case-signin-field-action:hover { color: #f2d8ab !important; }
+.case-signin-identity,
+.case-signin-alt-method { border-color: #806747 !important; }
+@media (max-width: 800px) {
+  .case-signin { display: flex; flex-direction: column; }
+  .case-signin-scene {
+    min-height: 205px;
+    flex: 0 0 205px;
+    border-right: 0;
+    border-bottom: 1px solid #806044;
+    background-position: center, center 54%;
+  }
+  .case-signin-scene::after { inset: 12px; }
+  .case-signin-brand { top: 12px; left: 22px; width: 125px; }
+  .case-signin-panel { flex: 1; padding: 38px 22px 45px; }
+  .case-signin-panel-inner { max-width: 440px; }
+  .case-signin-heading { margin-bottom: 27px; }
+  .case-signin-rule { margin-bottom: 22px; }
+  .case-signin-heading h1 { font-size: clamp(3.1rem, 11vw, 4.2rem); }
+  .case-signin-heading p { font-size: .95rem; }
+}
+@media (max-width: 360px) {
+  .case-signin-scene { min-height: 170px; flex-basis: 170px; }
+  .case-signin-panel { padding-inline: 18px; }
+}
